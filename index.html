@@ -59,6 +59,7 @@
                 <div class="hidden md:flex items-center gap-10">
                     <a href="#about" class="nav-link link-underline">About</a>
                     <a href="#classes" class="nav-link link-underline">Classes</a>
+                    <a href="#gallery" class="nav-link link-underline">Gallery</a>
                     <a href="#contact" class="nav-link link-underline">Contact</a>
                     <a href="https://www.youtube.com/@niveditasaha1" target="_blank" rel="noopener"
                        class="nav-link link-underline flex items-center gap-1.5 text-terracotta">
@@ -85,6 +86,7 @@
             <div class="px-6 py-5 space-y-4">
                 <a href="#about" class="block nav-link">About</a>
                 <a href="#classes" class="block nav-link">Classes</a>
+                <a href="#gallery" class="block nav-link">Gallery</a>
                 <a href="#contact" class="block nav-link">Contact</a>
                 <a href="https://www.youtube.com/@niveditasaha1" target="_blank" rel="noopener"
                    class="block nav-link text-terracotta">YouTube Channel</a>
@@ -290,6 +292,80 @@
                         <span class="genre-pill">Professional Environment</span>
                         <span class="genre-pill">Convenient Location</span>
                     </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="hr-warm max-w-6xl mx-auto">
+
+
+    <!-- ============ GALLERY ============ -->
+    <section id="gallery" class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+            <!-- Section label -->
+            <div class="reveal mb-6">
+                <p class="ornament ornament-left text-warm-muted text-xs font-semibold tracking-[0.2em] uppercase max-w-xs">
+                    Gallery
+                </p>
+            </div>
+
+            <div class="reveal mb-16 max-w-2xl">
+                <h2 class="heading-display text-4xl md:text-5xl mb-5">
+                    Moments from the<br>
+                    <span class="heading-italic">Academy</span>
+                </h2>
+                <p class="text-warm-muted text-lg leading-relaxed">
+                    Performances, practice sessions, and celebrations.
+                </p>
+            </div>
+
+            <!-- Carousel -->
+            <div class="reveal gallery-carousel" aria-label="Photo gallery" aria-roledescription="carousel">
+                <div class="gallery-track" aria-live="polite">
+                    <div class="gallery-slide" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=533&fit=crop"
+                             alt="Academy performance" class="img-warm" loading="lazy">
+                    </div>
+                    <div class="gallery-slide" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=800&h=533&fit=crop"
+                             alt="Music practice session" class="img-warm" loading="lazy">
+                    </div>
+                    <div class="gallery-slide" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=533&fit=crop"
+                             alt="Stage performance" class="img-warm" loading="lazy">
+                    </div>
+                    <div class="gallery-slide" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=533&fit=crop"
+                             alt="Musical instruments" class="img-warm" loading="lazy">
+                    </div>
+                    <div class="gallery-slide" data-index="4">
+                        <img src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&h=533&fit=crop"
+                             alt="Academy celebration" class="img-warm" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Arrows (desktop only) -->
+                <button class="gallery-arrow gallery-arrow-prev hidden md:flex" aria-label="Previous photo">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                </button>
+                <button class="gallery-arrow gallery-arrow-next hidden md:flex" aria-label="Next photo">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                </button>
+
+                <!-- Dot indicators -->
+                <div class="gallery-dots">
+                    <button class="gallery-dot active" aria-label="Go to photo 1" data-index="0"></button>
+                    <button class="gallery-dot" aria-label="Go to photo 2" data-index="1"></button>
+                    <button class="gallery-dot" aria-label="Go to photo 3" data-index="2"></button>
+                    <button class="gallery-dot" aria-label="Go to photo 4" data-index="3"></button>
+                    <button class="gallery-dot" aria-label="Go to photo 5" data-index="4"></button>
                 </div>
             </div>
 
