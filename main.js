@@ -148,4 +148,88 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlides();
         startAutoAdvance();
     }
+
+    // ---- Interest form ----
+    const interestForm = document.getElementById('interest-form');
+    if (interestForm) {
+        const pills = interestForm.querySelectorAll('.interest-pill');
+        const hiddenInterests = document.getElementById('form-interests');
+        const nameInput = document.getElementById('form-name');
+        const mobileInput = document.getElementById('form-mobile');
+        const nameError = document.getElementById('name-error');
+        const mobileError = document.getElementById('mobile-error');
+        const interestError = document.getElementById('interest-error');
+        const formSuccess = document.getElementById('form-success');
+
+        // Toggle interest pills
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pill.classList.toggle('selected');
+                const isSelected = pill.classList.contains('selected');
+                pill.setAttribute('aria-checked', isSelected);
+
+                // Update hidden input with comma-separated values
+                const selected = Array.from(pills)
+                    .filter(p => p.classList.contains('selected'))
+                    .map(p => p.dataset.value);
+                hiddenInterests.value = selected.join(', ');
+            });
+        });
+
+        // Validation
+        function validateForm() {
+            let valid = true;
+
+            // Name
+            if (!nameInput.value.trim()) {
+                nameError.classList.remove('hidden');
+                nameInput.setAttribute('aria-describedby', 'name-error');
+                valid = false;
+            } else {
+                nameError.classList.add('hidden');
+                nameInput.removeAttribute('aria-describedby');
+            }
+
+            // Mobile — at least 10 digits
+            const digits = mobileInput.value.replace(/\D/g, '');
+            if (digits.length < 10) {
+                mobileError.classList.remove('hidden');
+                mobileInput.setAttribute('aria-describedby', 'mobile-error');
+                valid = false;
+            } else {
+                mobileError.classList.add('hidden');
+                mobileInput.removeAttribute('aria-describedby');
+            }
+
+            // Interest — at least one selected
+            const selectedPills = interestForm.querySelectorAll('.interest-pill.selected');
+            if (selectedPills.length === 0) {
+                interestError.classList.remove('hidden');
+                valid = false;
+            } else {
+                interestError.classList.add('hidden');
+            }
+
+            return valid;
+        }
+
+        // Submit handler
+        interestForm.addEventListener('submit', (e) => {
+            if (!validateForm()) {
+                e.preventDefault();
+                return;
+            }
+
+            // Form submits to Google Forms via hidden iframe (target="hidden_iframe")
+            // Show success message after a short delay
+            setTimeout(() => {
+                interestForm.classList.add('hidden');
+                formSuccess.classList.remove('hidden');
+            }, 500);
+        });
+
+        // Clear errors on input
+        nameInput.addEventListener('input', () => nameError.classList.add('hidden'));
+        mobileInput.addEventListener('input', () => mobileError.classList.add('hidden'));
+    }
 });
