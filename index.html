@@ -393,7 +393,74 @@
                         </p>
                     </div>
 
-                    <div class="reveal reveal-delay-1 space-y-6 mb-10">
+                    <!-- Interest Form -->
+                    <div class="reveal reveal-delay-1">
+                        <!--
+                            GOOGLE FORMS SETUP:
+                            1. Create a Google Form with 3 fields: Name, Mobile Number, Interested In
+                            2. Replace FORM_ID below with your form's ID
+                            3. Replace entry.XXXXXX values with your form's entry IDs
+                               (View form page source to find them)
+                            4. In Google Forms: Responses tab > three-dot menu > "Get email notifications for new responses"
+                        -->
+                        <form id="interest-form" class="form-card mb-8"
+                              action="https://docs.google.com/forms/d/e/FORM_ID/formResponse"
+                              method="POST" target="hidden_iframe">
+
+                            <h3 class="font-display text-xl md:text-2xl font-semibold text-white mb-5">
+                                Register Your Interest
+                            </h3>
+
+                            <!-- Name -->
+                            <div class="mb-4">
+                                <label for="form-name" class="form-label">Name</label>
+                                <input type="text" id="form-name" name="entry.XXXXXX"
+                                       class="form-input" placeholder="Your full name"
+                                       aria-required="true">
+                                <p class="form-error hidden" id="name-error" role="alert">Please enter your name</p>
+                            </div>
+
+                            <!-- Mobile -->
+                            <div class="mb-4">
+                                <label for="form-mobile" class="form-label">Mobile Number</label>
+                                <input type="tel" id="form-mobile" name="entry.XXXXXX"
+                                       class="form-input" placeholder="+91 XXXXX XXXXX"
+                                       aria-required="true">
+                                <p class="form-error hidden" id="mobile-error" role="alert">Please enter a valid mobile number</p>
+                            </div>
+
+                            <!-- Interest Type -->
+                            <div class="mb-5">
+                                <p class="form-label mb-2">Interested In</p>
+                                <div class="flex flex-wrap gap-2" id="interest-pills" role="group" aria-label="Select your interests">
+                                    <button type="button" class="interest-pill" role="checkbox" aria-checked="false" data-value="Classical">Classical</button>
+                                    <button type="button" class="interest-pill" role="checkbox" aria-checked="false" data-value="Ghazal">Ghazal</button>
+                                    <button type="button" class="interest-pill" role="checkbox" aria-checked="false" data-value="Bollywood">Bollywood</button>
+                                    <button type="button" class="interest-pill" role="checkbox" aria-checked="false" data-value="Bhajan">Bhajan</button>
+                                    <button type="button" class="interest-pill" role="checkbox" aria-checked="false" data-value="Harmonium">Harmonium</button>
+                                </div>
+                                <!-- Hidden input to hold comma-separated interests for Google Forms -->
+                                <input type="hidden" id="form-interests" name="entry.XXXXXX">
+                                <p class="form-error hidden" id="interest-error" role="alert">Please select at least one interest</p>
+                            </div>
+
+                            <!-- Submit -->
+                            <button type="submit" class="btn-form-submit w-full">
+                                Submit Interest
+                            </button>
+                        </form>
+
+                        <!-- Success message (hidden by default) -->
+                        <div id="form-success" class="form-success hidden mb-8">
+                            <svg class="w-8 h-8 text-gold-light mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <h3 class="font-display text-xl font-semibold text-white mb-2">Thank You!</h3>
+                            <p class="text-white/60 text-sm">We'll reach out to you soon about your musical journey.</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal reveal-delay-2 space-y-6 mb-10">
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                                 <svg class="w-4 h-4 text-gold-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -420,7 +487,7 @@
                         </div>
                     </div>
 
-                    <div class="reveal reveal-delay-2">
+                    <div class="reveal reveal-delay-3">
                         <a href="https://wa.me/917507191658?text=Hi,%20I%20am%20interested%20in%20joining%20singing%20classes."
                            target="_blank" rel="noopener"
                            class="btn-whatsapp">
@@ -460,6 +527,9 @@
         </div>
     </footer>
 
+
+    <!-- Hidden iframe for Google Forms submission -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <script type="module" src="/main.js"></script>
 </body>
