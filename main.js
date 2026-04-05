@@ -17,15 +17,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Navbar scroll effect
+    // Navbar border on scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
-            navbar.classList.add('shadow-md');
-            navbar.classList.replace('bg-white/90', 'bg-white/95');
+            navbar.style.borderBottom = '1px solid rgba(221, 213, 203, 0.5)';
         } else {
-            navbar.classList.remove('shadow-md');
-            navbar.classList.replace('bg-white/95', 'bg-white/90');
+            navbar.style.borderBottom = '1px solid transparent';
         }
+    }, { passive: true });
+
+    // Scroll-triggered reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
     });
+
+    reveals.forEach(el => observer.observe(el));
 });
